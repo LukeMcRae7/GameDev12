@@ -12,12 +12,30 @@
             color: rgb(253, 255, 150);
         }
     </style>
+    <script>
+        setTimeout(boldFunction, 1000);
+        function boldFunction(){
+            document.getElementById('myDiv01').innerHTML = "Bold";
+            document.getElementById('myDiv01').style = 'font-weight: bolder;font-size: 160%';
+            setTimeout(italicFunction, 1000);
+        }
+        function italicFunction(){
+            document.getElementById('myDiv01').innerHTML = "Italic";
+            document.getElementById('myDiv01').style = 'font-style: italic;font-size: 160%';
+            setTimeout(normalFunction, 1000);
+        }
+        function normalFunction(){
+            document.getElementById('myDiv01').innerHTML = "Normal";
+            document.getElementById('myDiv01').style = 'font-style: normal;font-size: 160%';
+            setTimeout(boldFunction, 1000);
+        }
+    </script>
 <head>
-    <button style="width: 4%; height: 5%; font-size: 220%; color:aliceblue; background: none;" onclick="window.location.href='https://lukemcrae7.github.io/gameDev12/public/';"><</button>
+    <button style="width: 4%; height: 5%; font-size: 220%; color:aliceblue; background: none;" onclick="window.location.href='https://lukemcrae7.github.io/gameDev12/public/';"><</button> <-- Back Button
     <h1 style="text-align: center; font-size: 200%;">Basic Web Page Luke</h1>
 </head>
-<a href="https://en.wikipedia.org/wiki/Googol">Link to Googol</a>
-
+<a href="https://en.wikipedia.org/wiki/Googol">Link to Googol</a><br><br>
+<div id="myDiv01" style="font-size: 160%">Normal</div>
 
 
 
