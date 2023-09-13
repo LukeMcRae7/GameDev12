@@ -20,15 +20,15 @@
         height: 100%;
         background-color: rgba(0, 0, 0);
         z-index: 1;
-        animation: fadeOut 2s forwards .5s; /* Apply the fadeOut animation */
+        animation: fadeOut 2s forwards .5s;
     }
 
     @keyframes fadeOut {
         from {
-            opacity: 1; /* Start with opacity 1 (fully opaque) */
+            opacity: 1;
         }
         to {
-            opacity: 0; /* End with opacity 0 (fully transparent) */
+            opacity: 0;
         }
         to {
             z-index: -1;
@@ -57,18 +57,14 @@
         }
     </script>
 <head>
-    <button id="myBut01" style="width: 4%; height: 5%; font-size: 160%; color:#2495db; background: none; position: absolute; left: 5px; border-color: #2495db; border-radius: 10%; font-weight: bolder;" onmouseover="document.getElementById('myBut01').style = 'width: 4%; height: 5%; font-size: 160%; color:#2495db; position: absolute; left: 5px; border-color: #2495db; border-radius: 10%; font-weight: bolder;background-color: #dddddd;'" onclick="window.location.href='https://lukemcrae7.github.io/gameDev12/public/';">⮌</button>
+    <button id="myBut01" style="width: 4%; height: 5%; font-size: 160%; color:#0665e2; background: none; position: absolute; left: 5px; border-color: #0665e2; border-radius: 10%; font-weight: bolder;" onmouseover="document.getElementById('myBut01').style = 'width: 4%; height: 5%; font-size: 160%; color:#0665e2; position: absolute; left: 5px; border-color: #0665e2; border-radius: 10%; font-weight: bolder;background-color: #dddddd;'" onmouseleave="document.getElementById('myBut01').style = 'width: 4%; height: 5%; font-size: 160%; color:#0665e2; background: none; position: absolute; left: 5px; border-color: #0665e2; border-radius: 10%; font-weight: bolder;'" onclick="window.location.href='https://lukemcrae7.github.io/gameDev12/public/';">⮌</button>
     <h1 style="text-align: center; font-size: 200%;">Basic Web Page Luke</h1>
-</head>
-<a href="https://lukemcrae7.github.io/gameDev2023/public/t3a01-Web-Basics-by-Luke.html">Last Year</a><br><br>
-<a href="https://en.wikipedia.org/wiki/Googol">Link to Googol</a><br><br>
+</head><br>
+<button id="myBut02" style="width: 10%; height: 7%; font-size: 120%; color: white; background-color: #0665e2; border: none; border-radius: 6px;" onmouseover="document.getElementById('myBut02').style = 'width: 10%; height: 7%; font-size: 120%; color: white; background-color: #0654b9; border: none; border-radius: 6px;'" onmouseleave="document.getElementById('myBut02').style = 'width: 10%; height: 7%; font-size: 120%; color: white; background-color: #0665e2; border: none; border-radius: 6px;'" onclick="window.location.href='https://lukemcrae7.github.io/gameDev2023/public/t3a01-Web-Basics-by-Luke.html';">Last Year</button><br><br>
+<button id="myBut03" style="width: 10%; height: 7%; font-size: 120%; color: white; background-color: #0665e2; border: none; border-radius: 6px;" onmouseover="document.getElementById('myBut03').style = 'width: 10%; height: 7%; font-size: 120%; color: white; background-color: #0654b9; border: none; border-radius: 6px;'" onmouseleave="document.getElementById('myBut03').style = 'width: 10%; height: 7%; font-size: 120%; color: white; background-color: #0665e2; border: none; border-radius: 6px;'" onclick="window.location.href='https://en.wikipedia.org/wiki/Googol';">Link to Googol</button>
 
 <div id="myDiv01" style="font-size: 160%">Normal</div>
 <br>
-<img id="myImg01" style="height: 30%; border-radius: 10%;" src="./Images/click here.png" onclick="document.getElementById('myImg01').src = './Images/never-gonna-give-you-up.gif'; document.getElementById('myImg01').style = 'height: 30%; border-radius: 10%;'">
-
-
-
-
+<img id="myImg01" style="border: black; border-width: 5%; height: 30%; border-radius: 10%;" src="./Images/click here.png" onclick="document.getElementById('myImg01').src = './Images/never-gonna-give-you-up.gif'; document.getElementById('myImg01').style = 'height: 30%; border-radius: 10%; border: black; border-width: 5%;'">
 
 </html>
