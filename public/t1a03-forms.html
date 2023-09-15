@@ -1,67 +1,243 @@
 <style>
-           body{
-            color: rgb(0, 0, 0);
-            font-family: sans-serif;
-            font-size: 125%;
-        }
-        .topRad{
-         opacity: 2;
-        }
-        .topRadLabel{
-         margin-right: 60px;
-         position: absolute;
-         background: rgb(178, 214, 255);
-         height: 90px;
-         width: 90px;
-         border-radius: 110%;
-        }
-        .topRadLabelOver{
-         margin-right: 60px;
-         position: absolute;
-         background: rgb(33, 71, 114);
-         height: 90px;
-         width: 90px;
-         border-radius: 110%;
-        }
+   body{
+      font-family: sans-serif;
+      background-color: rgb(32, 162, 255);
+      color: rgb(138, 234, 255);
+      font-weight: bold;
+      font-size: 150%;
+   }
+
+   .formClass{
+      background: none;
+      border: none;
+      outline: none;
+      width: 52%;
+      height: 5%;
+      font-size: 120%;
+      color: white;
+      font-weight: lighter;
+   }
+
+   input[type="checkbox"]{
+      scale: 3;
+      position: absolute;
+      left: 3%;
+      appearance: none;
+      height: 13px;
+      width: 13px;
+      border-radius: 15%;
+      background-color: rgb(32, 162, 255);
+      cursor: pointer;
+      border: 1px solid white;
+   }
+   input[type="checkbox"]:hover{
+      scale: 3;
+      position: absolute;
+      left: 3%;
+      appearance: none;
+      height: 13px;
+      width: 13px;
+      border-radius: 15%;
+      background-color: rgb(21, 135, 218);
+      border: 1px solid white;
+   }
+   input[type="checkbox"]:hover:checked{
+      scale: 3;
+      position: absolute;
+      left: 3%;
+      appearance: none;
+      height: 13px;
+      width: 13px;
+      border-radius: 15%;
+      background-color: rgb(21, 135, 218);
+      border: 1px solid white;
+   }
+   input[type="checkbox"]:checked{
+      scale: 3;
+      position: absolute;
+      left: 3%;
+      appearance: none;
+      height: 13px;
+      width: 13px;
+      border-radius: 15%;
+      background-color: rgb(32, 162, 255);
+      content: 'f';
+      display: flex;
+      justify-content: center;
+      color: aliceblue;
+      border: 1px solid white;
+   }
+
+   [type="checkbox"]:checked + label:after {
+     content: '✔';
+     position: absolute;
+     color: rgb(138, 234, 255);
+     left: 3%;
+     cursor: pointer;
+     transform: translateY(-20%);
+   }
+
+
+
+   input[type="radio"]{
+      scale: 3;
+      position: absolute;
+      left: 3%;
+      appearance: none;
+      height: 13px;
+      width: 13px;
+      border-radius: 55%;
+      background-color: rgb(32, 162, 255);
+      cursor: pointer;
+      border: 1px solid white;
+   }
+
+   input[type="radio"]:hover{
+      scale: 3;
+      position: absolute;
+      left: 3%;
+      appearance: none;
+      height: 13px;
+      width: 13px;
+      border-radius: 55%;
+      background-color: rgb(21, 135, 218);
+      border: 1px solid white;
+   }
+
+   input[type="radio"]:checked{
+      scale: 3;
+      position: absolute;
+      left: 3%;
+      appearance: none;
+      height: 13px;
+      width: 13px;
+      border-radius: 55%;
+      background-color: rgb(32, 162, 255);
+      border: 1px solid white;
+   }
+   input[type="radio"]:checked:hover{
+      scale: 3;
+      position: absolute;
+      left: 3%;
+      appearance: none;
+      height: 13px;
+      width: 13px;
+      border-radius: 55%;
+      background-color: rgb(21, 135, 218);
+      border: 1px solid white;
+   }
+   [type="radio"]:checked + label:after {
+     content: '◍';
+     font-size: 110%;
+     position: absolute;
+     color: rgb(138, 234, 255);
+     left: 3%;
+     cursor: pointer;
+     transform: translateY(-15%);
+   }
+
+   .tab{
+      position: relative;
+      left: 0%;
+      width: 16.7%;
+      height: 8%;
+      font-size: 110%;
+      background-color: rgb(100, 211, 255);
+      color: white;
+      border: none;
+      border-radius: 10px;
+   }
+   .tab:hover{
+      position: relative;
+      left: 0%;
+      width: 16.7%;
+      height: 8%;
+      font-size: 110%;
+      background-color: rgb(82, 195, 239);
+      color: white;
+      border: none;
+      border-radius: 10px;
+   }
+
+   .bigButton{
+      position: relative;
+      left: 0%;
+      width: 51.55%;
+      height: 12%;
+      font-size: 110%;
+      background-color: rgb(100, 211, 255);
+      color: white;
+      border: none;
+      border-radius: 10px;
+   }
+   .bigButton:hover{
+      position: relative;
+      left: 0%;
+      width: 51.55%;
+      height: 12%;
+      font-size: 110%;
+      background-color: rgb(82, 195, 239);
+      color: white;
+      border: none;
+      border-radius: 10px;
+   }
 </style>
+<script>
+   let stylex = 'background-color: white;'
+</script>
 
-<h1 align=center>t3a03-forms-fred.html</h1>
-<font color=blue> Prove you can use: Forms</font><br>
 
-The following are all form elements (add to them):<br>
+<h1 style="font-size: 150%;" align=center>t1a03-forms-fred.html</h1>
+<div id="formBox01" style="position: absolute; width: 49%; height: 90%; left: 10%">
 <form>
-<input id="rad01" class="topRad" type=radio name="myRad01" value="">
-<label style="left: 770px" class="topRadLabel" for="rad01"></label>
+Name<br>
+<input class="formClass" type="text">
+<div style="background-color: rgb(138, 234, 255); height: 0.3%; width: 52%;"></div>
+<br><br>
 
-<input  id="rad02" style="left: 900px" class="topRad" type=radio name="myRad01" value="">
-<label style="left: 870px" class="topRadLabel" for="rad02"></label>
 
-<input id="rad03" style="left: 1000px" class="topRad" type=radio name="myRad01" value="">
-<label style="left: 970px" class="topRadlabel" for="rad03"></label>
 
-<input id="rad04" style="left: 1100px" class="topRad" type=radio name="myRad01" value="">
-<label style="left: 1070px" class="topRadLabel" for="rad04"></label><br>
+<div style="width: 32%; height: 40%; position: absolute;">
+Checkboxes<br>
+<br><input id="checkbox01" type="checkbox">
+<label for="checkbox01"></label> <div style="position: relative; left: 16%; bottom: 1%; color: white; font-weight: lighter;">Option 1</div>
 
-hidden:<input type=hidden ><br>
-File:<input type=file><br>
-reset:<input type =reset><br>
-Submit (advanced)<input type=submit><br>
+<br><br><input id="checkbox02" type="checkbox">
+<label for="checkbox02"></label> <div style="position: relative; left: 16%; bottom: 1%; color: white; font-weight: lighter;">Option 2</div>
 
-Button: <input type=button value="click" onclick="{
-   document.getElementById('myArea01').value = 'Cool'
-}"><br>
-Textarea:<br>
-<textarea id="myArea01" cols=60 rows=5 > wow </textarea><br>
+<br><br><input id="checkbox03" type="checkbox">
+<label for="checkbox03"></label> <div style="position: relative; left: 16%; bottom: 1%; color: white; font-weight: lighter;">Option 3</div>
 
-Select Box:<BR>
-<select id="mySelect01" size=2 onChange="{
-  document.getElementById('myArea01').value = document.getElementById('mySelect01').value
- }">
-<option value='myOne'>One
-<option value='myTwo'>Two
-<option value='myThree'>Three
-</select>
+</div>
+
+
+
+
+<div style="width: 32%; height: 40%; left: 35%; position: absolute;">
+   Radio buttons<br>
+   <br><input id="radio01" name="radio1" type="radio">
+   <label for="radio01"></label> <div style="position: relative; left: 16%; bottom: 1%; color: white; font-weight: lighter;">Option 1</div>
+
+   <br><br><input id="radio02" name="radio1" type="radio">
+   <label for="radio02"></label> <div style="position: relative; left: 16%; bottom: 1%; color: white; font-weight: lighter;">Option 2</div>
+   
+   <br><br><input id="radio03" name="radio1" type="radio">
+   <label for="radio03"></label> <div style="position: relative; left: 16%; bottom: 1%; color: white; font-weight: lighter;">Option 3</div>
+
+</div>
+<br><br><br><br><br><br><br><br><br><br><br>
+<input type="button" style="background: rgb(21, 135, 218);" class="tab" id="tab01" value="Tab 1" onclick="document.getElementById('tab01').style.background = 'rgb(21, 135, 218)'; document.getElementById('tab02').style.background = 'rgb(100, 211, 255)'; document.getElementById('tab03').style.background = 'rgb(100, 211, 255)'">
+<input type="button" class="tab" id="tab02" value="Tab 2" onclick="document.getElementById('tab02').style.background = 'rgb(21, 135, 218)'; document.getElementById('tab01').style.background = 'rgb(100, 211, 255)'; document.getElementById('tab03').style.background = 'rgb(100, 211, 255)'">
+<input type="button" class="tab" id="tab03" value="Tab 3" onclick="document.getElementById('tab03').style.background = 'rgb(21, 135, 218)'; document.getElementById('tab02').style.background = 'rgb(100, 211, 255)'; document.getElementById('tab01').style.background = 'rgb(100, 211, 255)'">
+
+<br><br>
+<input type="button" class="bigButton" value="Refresh Page ⟳" onclick="window.location.href='./t1a03-forms.html';">
 </form>
+</div>
+
+
+<div id="formBox02" style="position: absolute; width: 49%; height: 90%; left: 50%">
 
 
 
+</div>
