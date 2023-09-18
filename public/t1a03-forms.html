@@ -181,16 +181,56 @@
       border: none;
       border-radius: 10px;
    }
+
+   select{
+      appearance: none;
+      background: none;
+      outline: none;
+      width: 52%;
+      height: 5%;
+      border: none;
+      font-size: 120%;
+      color: white;
+      font-weight: lighter;
+   }
+
+   .optionClass{
+      background-color: white;
+      color: rgb(82, 195, 239);
+      font-size: 90%;
+   }
+
+   .btn-group input[type="button"] {
+  background-color: white; /* Green background */
+  border: 1px solid rgb(173, 173, 173); /* Green border */
+  color: rgb(82, 195, 239); /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 50%; /* Set a width if needed */
+  height: 8%;
+  font-size: 110%;
+  text-align: left;
+  display: block; /* Make the buttons appear below each other */
+}
+
+.btn-group input[type="button"]:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group input[type="button"]:hover {
+  background-color: #d6d6d6;
+}
 </style>
 <script>
    let stylex = 'background-color: white;'
 </script>
 
 
-<h1 style="font-size: 150%;" align=center>t1a03-forms-fred.html</h1>
+<h1 style="font-size: 150%;" align=center>t1a03-Forms-Luke.html</h1>
 <div id="formBox01" style="position: absolute; width: 49%; height: 90%; left: 10%">
 <form>
-Name<br>
+Name<br><br>
 <input class="formClass" type="text">
 <div style="background-color: rgb(138, 234, 255); height: 0.3%; width: 52%;"></div>
 <br><br>
@@ -231,13 +271,32 @@ Checkboxes<br>
 <input type="button" class="tab" id="tab03" value="Tab 3" onclick="document.getElementById('tab03').style.background = 'rgb(21, 135, 218)'; document.getElementById('tab02').style.background = 'rgb(100, 211, 255)'; document.getElementById('tab01').style.background = 'rgb(100, 211, 255)'">
 
 <br><br>
-<input type="button" class="bigButton" value="Refresh Page ⟳" onclick="window.location.href='./t1a03-forms.html';">
+<input type="button" class="bigButton" value="Last Year ➜" onclick="window.location.href='https://lukemcrae7.github.io/gameDev2023/public/t3a03-Forms-by-Luke.html';">
 </form>
 </div>
 
 
 <div id="formBox02" style="position: absolute; width: 49%; height: 90%; left: 50%">
+<form>
+   <div>
+   <label for="dog-names">Location</label><br><br>
+<select name="dog-names" id="dog-names">
+    <option class="optionClass" value="canada">Canada</option>
+  <option class="optionClass" value="mexico">Mexico</option>
+  <option class="optionClass" value="united arab emirates">United Arab Emirates</option>
+  <option class="optionClass" value="italy">Italy</option>
+</select>
+<img src="https://www.freeiconspng.com/uploads/white-down-arrow-png-2.png" style="position: absolute; top:7%; left:47%; width: 5%; z-index: -1;">
+</div>
+<div style="background-color: rgb(138, 234, 255); height: 0.3%; width: 52%;"></div>
 
+<br><br>
+<div class="btn-group">
+   <input type="button" value="Apple">
+   <input type="button" value="Samsung">
+   <input type="button" value="Sony">
+   <input type="button" value="Microsoft">
+ </div>
 
-
+</form>
 </div>
