@@ -1,0 +1,149 @@
+<style>
+    input[type="button"] {
+  background-color: #808080;
+  color: white;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  }
+            input[type="button"]:hover {
+  background-color: #707070;
+  cursor: pointer;
+  }
+   :root {
+  --background-color: #0f203f;
+  --text-color: white;
+  }
+  * {
+      font-family: cursive;
+    }
+  body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 1em;
+  }
+        
+  a {
+  color: #5794ff;
+  }
+
+  .containerBox{
+    background-color: #182e58;
+    border-radius: 15px;
+    width: 25%;
+    position: relative;
+    text-align: center;
+  }
+
+  .hoverBox{
+    height: 100px;
+    width: 100px;
+    top: 25%;
+    border-color: #2d4f8a;
+    border-width: 3px;
+    position: absolute;
+    border-radius: 25px;
+    border-style: solid;
+  }
+
+  .movingBox{
+    height: 100px;
+    width: 100px;
+    top: 25%;
+    border-color: #2d4f8a;
+    border-width: 3px;
+    position: absolute;
+    border-radius: 25px;
+    border-style: solid;
+    transition: all 0.6s;
+  }
+
+  input[type="button"]{
+    height: 100px;
+    width: 100px;
+    top: 25%;
+    border-color: #2d4f8a;
+    border-width: 3px;
+    position: absolute;
+    border-radius: 25px;
+    border-style: solid;
+    background: none;
+    font-size: 60px;
+    z-index: 9;
+  }
+
+  iframe {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 200px;
+    transition: all 0.6s;
+    z-index: 10;
+  }
+
+  iframe:hover {
+    top: -10px;
+    height: 600px;
+    width: 650px;
+  }
+
+  textarea {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 210px;
+    height: 60px;
+    transition: all 0.6s;
+  }
+  
+  textarea:focus {
+    left: 50px;
+    top: -10px;
+    height: 200px;
+    width: 350px;
+  }
+
+  h2{
+    color:#3c64aa;
+  }
+  </style>
+  Version 1.0.0</br>
+  <h1 align=center style="color: white;">t3a04-CSS-by-Luke</h1><body>
+
+    <div>
+  <div class="containerBox">
+  <h2>Last Year:</h2><br>
+  <iframe src="https://lukemcrae7.github.io/gameDev2023/public/t3a04-CSS-by-Luke.html" title="Last year" id="myIframe" onclick="document.getElementById('myIframe').className = iframe02"></iframe><br><br>
+</div><br>
+
+<div style="height: 25%;" class="containerBox">
+  <h2>Cursors:</h2>
+<div style="left: 9%; cursor: wait;" class="hoverBox"><img src="./Images/css/loading_gif.gif" style="width: 60%; position: relative; top: 20%;"></div>
+<div style="left: 39%;  cursor:grab;" class="hoverBox"><img src="./Images/css/grab.png" style="width: 60%; position: relative; top: 20%;"></div>
+<div style="left: 69%;  cursor:cell;" class="hoverBox"><img src="./Images/css/cell.png" style="width: 60%; position: relative; top: 20%;"></div>
+</div>
+</div>
+
+
+
+
+<div style="position: absolute; left: 28%; top: 115px; height: 80%; width: 25%;">
+<div style="height: 30%; width: 100%;" class="containerBox">
+  <h2>Click box to move back and forth</h2>
+  <div style="left: 9%;" id="movingBox01" class="movingBox" onclick="if(document.getElementById('movingBox01').style.left == '9%'){document.getElementById('movingBox01').style.left = '70%'} else {document.getElementById('movingBox01').style.left = '9%'}">Click</div>
+</div>
+<br><br>
+<script>
+let myx = 1;
+document.getElementById('counter01').innerHTML = 'x';
+</script>
+<div style="height: 37.5%; width: 100%;" class="containerBox">
+  <h2>Counter</h2>
+  <input type="button" value="-" style="left: 10%; top:30%" onclick="myx -= 1; document.getElementById('counter01').innerHTML = myx">
+  <div id="counter01" style="position: relative; left: 0%; top:5%; font-size: 90px;">1</div>
+  <input type="button" value="+" style="left: 70%; top:30%" onclick="myx += 1; document.getElementById('counter01').innerHTML = myx">
+</div>
+</div>
+  </body>
