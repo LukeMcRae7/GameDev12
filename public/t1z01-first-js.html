@@ -1,15 +1,20 @@
 <script>
-                myAnimal = 'cat'
+                let myAnimal = 'cat'
     function myPrint(x){
-        let myAnimal
-        for (i=1; i <= x; i++) {
-            if (i <= 3) {myAnimal = 'kitten'}
-            if(i == 1) {document.write('The ' + myAnimal + ' is ' + i + ' year old<br>')}
-            else {document.write('The ' + myAnimal + ' is ' + i + ' years old<br>')}
+        let result = ''
+        for (let i = 1; i <= x; i++) {
+            if (i == 1) {
+                result += 'The ' + myAnimal + ' is ' + i + ' <b>year</b> old<br>';
+            } else {
+                result += 'The ' + myAnimal + ' is ' + i + ' years old<br>';
+            }
         }
 
-        document.write(myOutArray[1] + myOutArray[2])
+        return result;
     }
 </script>
-<input type="number" value="1" id="catCounter" onchange="document.getElementById('catDisplay').innerHTML = myPrint(document.getElementById('catCounter').value)">
+myAnimal: <input type="text" value="cat" id="myAnimalChange" onchange="myAnimal = document.getElementById('myAnimalChange').value; document.getElementById('catDisplay').innerHTML = myPrint(document.getElementById('catCounter').value)"><br>
+Age: <input type="number" value="1" id="catCounter" onchange="document.getElementById('catDisplay').innerHTML = myPrint(document.getElementById('catCounter').value)"><br>
+
 <div id="catDisplay">...</div>
+
