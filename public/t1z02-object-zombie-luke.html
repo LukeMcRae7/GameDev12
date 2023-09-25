@@ -1,7 +1,22 @@
 <script>
-myZombie = ('zombie' = 'true', 'name' = 'Jon')
-myHuman = ('zombie' = 'false', 'name' = 'Dan')
+let myZombie = {zombie: true, name: "Jon"};
+let myHuman = {zombie: false, name: "Dan"};
 </script>
 
-Is <input type="text" value="Jon"> a Zombie?<br>
-<input type="button" value="Check" onclick="alert('dfsadfsadfs')">
+
+Is <select id="mySelect01" size=1 onchange="{
+    myInput = document.getElementById('mySelect01').value
+    if (myZombie.name == myInput && myZombie.zombie) {
+        document.getElementById('myDiv01').innerHTML = myInput + ' is a Zombie'
+    } else if (myHuman.name == myInput && myHuman.zombie) {
+        document.getElementById('myDiv01').innerHTML = myInput + ' is a Zombie'
+    } else {
+        document.getElementById('myDiv01').innerHTML = myInput + ' is NOT a Zombie'
+    }
+}">
+<option>
+    <option>Jon
+        <option>Dan
+</select> a Zombie?<br>
+
+<div id="myDiv01">...</div>
