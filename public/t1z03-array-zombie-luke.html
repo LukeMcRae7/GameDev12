@@ -1,0 +1,59 @@
+<link rel="stylesheet" type="text/css" href="styling.css">
+
+<h1>t1z02-object-zombie-Luke</h1>
+Is
+<select id="mySelect01" size="1">
+    <option></option>
+    <!-- Options will be added dynamically by JavaScript -->
+</select>
+a Zombie?<br>
+
+<div id="myDiv01">...</div>
+
+<script>
+  let myThingName = ['Jon', 'Dan', 'Fred'];
+  let myThingZombie = [true, false, true];
+
+  // Get a reference to the select element
+  let selectElement = document.getElementById('mySelect01');
+
+  // Add options based on the myThingName array
+  for (let i = 0; i < myThingName.length; i++) {
+    let option = document.createElement('option');
+    option.textContent = myThingName[i];
+    selectElement.appendChild(option);
+  }
+
+  // Add the onchange event handler here
+  selectElement.onchange = function() {
+    myInput = selectElement.value;
+    
+    for (myLoop = 0; myLoop < myThingName.length; myLoop++) {
+      if (myThingName[myLoop] == myInput) {
+        if (myThingZombie[myLoop]) {
+          document.getElementById('myDiv01').innerHTML = myInput + ' is a Zombie';
+        } else {
+          document.getElementById('myDiv01').innerHTML = myInput + ' is NOT a Zombie';
+        }
+      }
+    }
+  };
+</script><br><br>
+<b>Add Character:</b><br>
+Name: <input style="width: 10%;" type="text" value="Alex" id="myNaming01"><br><br>
+Type: <select size="1" id="mySelect02">
+    <option>Zombie
+    <option>Human
+    </option></select><br><br>
+    <input type="button" value="Add" onclick="{
+        myThingName[myThingName.length] = document.getElementById('myNaming01').value;
+        if(document.getElementById('mySelect02').value == 'Zombie'){
+            myThingZombie[myThingZombie.length] = true
+        } else{
+            myThingZombie[myThingZombie.length] = false
+        }
+
+        let option = document.createElement('option');
+    option.textContent = myThingName[myThingName.length - 1];
+    selectElement.appendChild(option);
+    }">

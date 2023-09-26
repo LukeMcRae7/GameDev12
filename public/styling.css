@@ -1,0 +1,305 @@
+/*Just a little layout demo using flexbox. Color palette found on Kuler - https://color.adobe.com/Theme-33-color-theme-5523423/ */
+
+/* Dummy text from Whedonipsum - www.commercekitchen.com/whedon-ipsum/ */
+
+/* Color definitions */
+body {
+    background: #aee1ff;
+    font-family: 'Nunito', sans-serif;
+    color: #222;
+    font-size: 130%;
+  }
+  
+  * {
+    transition: all .65s ease;
+    box-sizing: border-box;
+  }
+  
+  input[type='text']{
+    font-size: 120%;
+    border-radius: 10px;
+    background-color: #1A577F;
+    outline: white;
+    color: white;
+  }
+
+  input[type='button']{
+    font-size: 120%;
+    border-radius: 10px;
+    background-color: #1A577F;
+    outline: white;
+    color: white;
+  }
+    
+  input[type='number']{
+    font-size: 120%;
+    border-radius: 10px;
+    background-color: #1A577F;
+    outline: white;
+    color: white;
+  }
+
+  select{
+    font-size: 120%;
+    border-radius: 10px;
+    background-color: #1A577F;
+    outline: white;
+    color: white;
+  }
+
+  /* Centering Content */
+  .container {
+    max-width: 75em;
+    margin: 0 auto;
+  }
+  
+  /* Setting up the header so the "logo" and tagline sit on each side of the header using flexbox. At 700px, they will stack. */
+  .header {
+    background: #FF6067;
+    color: white;
+    padding: 10px;
+  }
+  
+  .header .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .header .site-title, .header .site-tagline {
+    font-weight: 400;
+  }
+  
+  @media (max-width: 700px) {
+    .header .site-title, .header .site-tagline {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .header .site-title {
+      margin: 0;
+    }
+  }
+  
+  .site-title, h1, h2, h3 {
+    font-family: 'Righteous', sans-serif;
+    font-size: 42px;
+    color: #1A577F;
+    text-align: center;
+  }
+  
+  h3 {
+    font-size: 32px;
+    color: #FF6067;
+  }
+  
+  .site-title {
+    color: white;
+  }
+  
+  .site-tagline {
+    font-size: 18px;
+    font-style: italic;
+  }
+  
+  /* Navigation, including mobile version */
+  .main-nav {
+    background: #F7EE1A;
+    color: white;
+  }
+  
+  .main-nav a {
+    color: #1A577F;
+    text-decoration: none;
+  }
+  
+  .main-nav ul,
+  .main-nav li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-nav ul {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .main-nav ul a {
+    padding: 15px 35px;
+    display: flex;
+    text-transform: uppercase;
+  }
+  
+  .main-nav ul a:hover,
+  .main-nav ul a:focus {
+    background: #F7EE1A;
+    color: #1A577F;
+  }
+  
+  .main-nav ul .mobile-button a {
+    position: absolute;
+    left: -99999em;
+  }
+  
+  @media (max-width: 700px) {
+    .main-nav ul {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+  
+    .main-nav ul a {
+      position: absolute;
+      left: -99999em;
+    }
+  
+    .main-nav ul.open li {
+      width: 100%;
+    }
+  
+    .main-nav ul.open li.mobile-button a {
+      background: #F7EE1A;
+      color: #1F729C;
+    }
+  
+    .main-nav ul.open a {
+      position: static;
+    }
+  
+    .main-nav ul .mobile-button a {
+      position: static;
+    }
+  
+    a {
+      width: 100%;
+    }
+  }
+  
+  /* Setting up full-bleed images, shrinking the height on smaller viewports */
+  .full-bleed {
+    background-size: cover;
+    min-height: 300px;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  
+  @media (max-width: 700px) {
+    .full-bleed {
+      min-height: 175px;
+    }
+  }
+  
+  .cool-photo {
+    background-image: url(http://lorempixel.com/1300/400/abstract);
+  }
+  
+  .cool-photo2 {
+    background-image: url(http://lorempixel.com/1300/400/food);
+  }
+  
+  .post {
+    padding: 30px;
+  }
+  
+  /* Setting up our columns/grids. The first section has two columns side by side. The second section has a grid of 3 columns, that reduces down to two columns and then full width as the browser is scaled down. */
+  .columns {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .columns .item {
+    padding: 25px;
+    max-width: 47%;
+    background: #1F729C;
+    color: #1A577F;
+    border-bottom: 5px solid #F7EE1A;
+    margin-bottom: 35px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .columns .item .item-title {
+    color: #D7F7FE;
+    font-size: 24px;
+    margin: 0 0 5px 0;
+    font-family: 'Righteous', sans-serif;
+  }
+  
+  .columns .item .item-image {
+    max-width: 100%;
+  }
+  
+  .columns .item:hover,
+  .columns .item:focus {
+    background: #1F729C;
+    border-bottom-color: #FF6067;
+  }
+  
+  .columns .item:hover .social,
+  .columns .item:focus .social {
+    position: absolute;
+    bottom: -21px;
+    height: auto;
+    z-index: 5;
+    padding: 10px 0;
+  }
+  
+  .columns .item:hover .social .fa:hover,
+  .columns .item:focus .social .fa:hover {
+    color: #FF6067;
+  }
+  
+  @media (max-width: 660px) {
+    .columns .item {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  
+  .columns.thirds .item {
+    max-width: 31%;
+  }
+  
+  @media (max-width: 770px) {
+    .columns.thirds .item {
+      max-width: 48%;
+    }
+  }
+  
+  @media (max-width: 660px) {
+    .columns.thirds .item {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  
+  .columns .social {
+    position: absolute;
+    bottom: -60px;
+    height: 0;
+    z-index: -1;
+    font-size: 28px;
+  }
+  
+  .footer {
+    background: #FF6067;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 13px;
+  }
+  
+  .footer a {
+    color: #F7EE1A;
+    text-decoration: none;
+    border-bottom: 1px solid;
+  }
+  
