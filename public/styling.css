@@ -10,11 +10,6 @@ body {
     font-size: 130%;
   }
   
-  * {
-    transition: all .65s ease;
-    box-sizing: border-box;
-  }
-  
   input[type='text']{
     font-size: 120%;
     border-radius: 10px;
@@ -29,11 +24,29 @@ body {
     background-color: #1A577F;
     outline: white;
     color: white;
+    transition: all 0.1s;
+  }
+
+  input[type='button']:hover{
+    font-size: 120%;
+    border-radius: 10px;
+    background-color: #17496b;
+    outline: rgb(180, 180, 180);
+    color: rgb(199, 199, 199);
+    transition: all 0.1s;
   }
     
   input[type='number']{
     font-size: 120%;
     border-radius: 10px;
+    background-color: #1A577F;
+    outline: white;
+    color: white;
+  }
+
+  input[type='color']{
+    font-size: 120%;
+    border-radius: 5px;
     background-color: #1A577F;
     outline: white;
     color: white;
