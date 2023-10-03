@@ -8,20 +8,35 @@
             this.myColor = passColor;
         }
 
-    myShow() {
-        document.getElementById('myDiv01').innerHTML = 'Hello '+ this.myName + '. You are '+ this.myAge + ' years old<br>';
-        document.getElementById('myDiv01').style.color = this.myColor;
+        myShow() {
+            document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '. You are ' + this.myAge + ' years old<br>';
+        }
     }
-}
+
+    class myColor extends myPerson {
+        constructor(passName, passAge, passColor) {
+            super(passName, passAge, passColor);
+        }
+
+        myShow() {
+            super.myShow();
+            document.getElementById('myDiv01').style.color = this.myColor;
+        }
+    }
 </script>
 Name: <input style="width: 150px;" type="text" id="nameInput" value="Elon"><br><br>
 Age:⠀  <input style="width: 154px;" type="number" id="ageInput" value=52><br><br>
-Color: <input style="width: 150px;" type="color" id="colorInput"> <br><br><br>
+Color: <input style="width: 150px;" type="color" id="colorInput" value="#0000ff"> <br><br><br>
 
 <input type="button" value="Class Person" onclick="{
-
-    myCharacter = new myPerson(document.getElementById('nameInput').value, document.getElementById('ageInput').value,  document.getElementById('colorInput').value);
-    myCharacter.myShow()
+    myCharacter = new myPerson(document.getElementById('nameInput').value, document.getElementById('ageInput').value);
+    myCharacter.myShow();
+    document.getElementById('myDiv01').style.color = 'black';
+}">
+<br>
+<input type="button" value="extends myColor" onclick="{
+    myCharacter = new myColor(document.getElementById('nameInput').value, document.getElementById('ageInput').value,  document.getElementById('colorInput').value);
+    myCharacter.myShow();
 }">
 
 <div id="myDiv01">...</div>
