@@ -1,0 +1,119 @@
+<link rel="stylesheet" type="text/css" href="styling.css">
+
+<h2>t1a06-Calc-by-Luke</h2>
+
+<style>
+    input[type=button]{
+        width: 50px;
+        height: 50px;
+    }
+</style>
+
+<div style="width: 100%; overflow: hidden;">
+    <div  id="screen1" style="float: left;">...</div>
+    <div  id="screen2" style="float: left;"></div>
+    <div  id="screen3"></div>
+</div>
+
+
+<input type="button" id="clear" value="Clear" style="width: 100px;" onclick="clearScreen()"><br>
+<input type="button" id="1" value="1" onclick="numberClick(this.value)">
+<input type="button" id="2" value="2" onclick="numberClick(this.value)">
+<input type="button" id="3" value="3" onclick="numberClick(this.value)">
+<input type="button" id="divide" value="÷" onclick="functionClick(this.value)"><br>
+<input type="button" id="4" value="4" onclick="numberClick(this.value)">
+<input type="button" id="5" value="5" onclick="numberClick(this.value)">
+<input type="button" id="6" value="6" onclick="numberClick(this.value)">
+<input type="button" id="multiply" value="x" onclick="functionClick(this.value)"><br>
+<input type="button" id="7" value="7" onclick="numberClick(this.value)">
+<input type="button" id="8" value="8" onclick="numberClick(this.value)">
+<input type="button" id="9" value="9" onclick="numberClick(this.value)">
+<input type="button" id="add" value="+" onclick="functionClick(this.value)"><br>
+<input type="button" id="0" value="0" onclick="numberClick(this.value)">
+⠀⠀⠀⠀
+<input type="button" id="subtract" value="-" onclick="functionClick(this.value)">
+<input type="button" id="enter" value="=" onclick="pressEnter()">
+<br><br>
+
+<b>History:</b>
+<div id="history"></div>
+
+<script>
+    let numberString = '';
+    let stringOperator = '';
+    let solidNumberString = '';
+    let solidNumberString2 = '';
+    let result = '';
+
+    function numberClick(number) {
+        if(result == ''){
+        if (stringOperator == ''){
+        numberString += number;
+        document.getElementById('screen1').innerHTML = numberString;
+    } else{
+        numberString = '';
+        numberString += number;
+        document.getElementById('screen2').innerHTML += numberString;
+    }
+} else {
+    clearScreen();
+    numberClick(number);
+}
+    }
+
+    function functionClick(operator) {
+        if(numberString != '' && stringOperator == '') {
+            document.getElementById('screen1').innerHTML += operator;
+             stringOperator = operator;
+             solidNumberString = parseInt(document.getElementById('screen1').innerHTML);
+        }
+    }
+
+    function clearScreen() {
+        numberString = '';
+        stringOperator = '';
+        solidNumberString = '';
+        solidNumberString2 = '';
+        result = '';
+        document.getElementById('screen1').innerHTML = '...';
+        document.getElementById('screen2').innerHTML = '';
+        document.getElementById('screen3').innerHTML = '';
+    }
+
+    function pressEnter() {
+        if (stringOperator == 'x'){
+            solidNumberString2 = parseInt(document.getElementById('screen2').innerHTML);
+
+            result = solidNumberString * solidNumberString2;
+
+            document.getElementById('screen3').innerHTML = '=' + result;
+        }
+
+        if (stringOperator == '÷'){
+            solidNumberString2 = parseInt(document.getElementById('screen2').innerHTML);
+
+            result = solidNumberString / solidNumberString2;
+
+            document.getElementById('screen3').innerHTML = '=' + result.toFixed(3);
+        }
+
+        if (stringOperator == '+'){
+            solidNumberString2 = parseInt(document.getElementById('screen2').innerHTML);
+
+            result = solidNumberString + solidNumberString2;
+
+            document.getElementById('screen3').innerHTML = '=' + result;
+        }
+
+        if (stringOperator == '-'){
+            solidNumberString2 = parseInt(document.getElementById('screen2').innerHTML);
+
+            result = solidNumberString - solidNumberString2;
+
+            document.getElementById('screen3').innerHTML = '=' + result;
+        }
+
+        document.getElementById('history').innerHTML += document.getElementById('screen1').innerHTML + document.getElementById('screen2').innerHTML + document.getElementById('screen3').innerHTML + "<br>";
+    }
+
+</script>
