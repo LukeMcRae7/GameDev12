@@ -1,0 +1,181 @@
+
+<style>
+    body{
+        text-align: center;
+        background-color: rgb(44, 49, 65);
+        color: white;
+    }
+
+    input[type=button]{
+        background-color: rgb(91, 160, 82);
+        color: white;
+        border-radius: 10px;
+        width: 150px;
+        height: 50px;
+        border: none;
+        font-size: 25px;
+        white-space: normal;
+        vertical-align: middle;
+        transition: 0.2s all;
+    }
+
+    input[type=button]:hover{
+        background-color: rgb(76, 136, 68);
+        color: white;
+        border-radius: 10px;
+        width: 150px;
+        height: 50px;
+        border: none;
+        font-size: 25px;
+        white-space: normal;
+        vertical-align: middle;
+        transition: 0.2s all;
+    }
+
+    
+    select{
+        background-color: rgb(238, 221, 221);
+        border-radius: 5px;
+        width: 200px;
+        height: 25px;
+        border: none;
+        font-size: 20px;
+        white-space: normal;
+        vertical-align: middle;
+    }
+
+    button{
+        background-color: rgb(221, 230, 238);
+        border-radius: 10px;
+        width: 200px;
+        height: 100px;
+        border: none;
+        font-size: 25px;
+        white-space: normal;
+        vertical-align: middle;
+        transition: 0.2s all;
+    }
+
+    button:hover{
+        background-color: rgb(201, 213, 223);
+        border-radius: 10px;
+        width: 200px;
+        height: 100px;
+        border: none;
+        font-size: 25px;
+        white-space: normal;
+        vertical-align: middle;
+        transition: 0.2s all;
+    }
+</style>
+
+<script>
+    let myDataJson;
+    let myData;
+    let scoreCurrent = 0;
+    let scoreTotal = 0;
+    var buttonIds = ['myAnswer1', 'myAnswer2', 'myAnswer3', 'myAnswer4'];
+    let started = false;
+    
+    function answerClick(answer) {
+    if (answer == document.getElementById(buttonIds[0]) && started == true) {
+        scoreCurrent += 1;
+        scoreTotal += 1;
+        document.getElementById(buttonIds[1]).style.backgroundColor = 'rgb(184, 69, 69)';
+        document.getElementById(buttonIds[2]).style.backgroundColor = 'rgb(184, 69, 69)';
+        document.getElementById(buttonIds[3]).style.backgroundColor = 'rgb(184, 69, 69)';
+        answer.style.backgroundColor = 'rgb(91, 160, 82)';
+        document.getElementById('score').innerHTML = scoreCurrent + ' / ' + scoreTotal;
+
+        document.getElementById(buttonIds[0]).disabled = true;
+        document.getElementById(buttonIds[1]).disabled = true;
+        document.getElementById(buttonIds[2]).disabled = true;
+        document.getElementById(buttonIds[3]).disabled = true;
+
+        setTimeout(() => {
+        document.getElementById(buttonIds[0]).style.backgroundColor = 'rgb(221, 230, 238)';
+        document.getElementById(buttonIds[1]).style.backgroundColor = 'rgb(221, 230, 238)';
+        document.getElementById(buttonIds[2]).style.backgroundColor = 'rgb(221, 230, 238)';
+        document.getElementById(buttonIds[3]).style.backgroundColor = 'rgb(221, 230, 238)';
+
+        playTrivia();
+        document.getElementById(buttonIds[0]).disabled = false;
+document.getElementById(buttonIds[1]).disabled = false;
+document.getElementById(buttonIds[2]).disabled = false;
+document.getElementById(buttonIds[3]).disabled = false;
+    }, 2500);
+    }
+    
+    else if(started == true) {
+        scoreTotal += 1;
+        document.getElementById(buttonIds[0]).style.backgroundColor = 'rgb(91, 160, 82)';
+        document.getElementById(buttonIds[1]).style.backgroundColor = 'rgb(184, 69, 69)';
+        document.getElementById(buttonIds[2]).style.backgroundColor = 'rgb(184, 69, 69)';
+        document.getElementById(buttonIds[3]).style.backgroundColor = 'rgb(184, 69, 69)';
+        document.getElementById('score').innerHTML = scoreCurrent + ' / ' + scoreTotal;
+
+        document.getElementById(buttonIds[0]).disabled = true;
+        document.getElementById(buttonIds[1]).disabled = true;
+        document.getElementById(buttonIds[2]).disabled = true;
+        document.getElementById(buttonIds[3]).disabled = true;
+setTimeout(() => {
+document.getElementById(buttonIds[0]).style.backgroundColor = 'rgb(221, 230, 238)';
+document.getElementById(buttonIds[1]).style.backgroundColor = 'rgb(221, 230, 238)';
+document.getElementById(buttonIds[2]).style.backgroundColor = 'rgb(221, 230, 238)';
+document.getElementById(buttonIds[3]).style.backgroundColor = 'rgb(221, 230, 238)';
+playTrivia();
+
+document.getElementById(buttonIds[0]).disabled = false;
+document.getElementById(buttonIds[1]).disabled = false;
+document.getElementById(buttonIds[2]).disabled = false;
+document.getElementById(buttonIds[3]).disabled = false;
+}, 2500);
+    }
+}
+
+function playTrivia() {
+    started = true;
+    async function myCall() {
+        if(document.getElementById('categorySelect').value == 'History'){myData = await fetch('https://opentdb.com/api.php?amount=1&category=23&type=multiple')}
+        else if(document.getElementById('categorySelect').value == 'Vehicles'){myData = await fetch('https://opentdb.com/api.php?amount=1&category=28&type=multiple')}
+        else {myData = await fetch('https://opentdb.com/api.php?amount=1&category=9&type=multiple')}
+        
+        myDataJson = await myData.json()
+        console.log(myDataJson)
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+shuffleArray(buttonIds);
+        document.getElementById('myDiv01').innerHTML = myDataJson.results[0].question;
+        document.getElementById(buttonIds[0]).innerHTML = myDataJson.results[0].correct_answer;
+        document.getElementById(buttonIds[1]).innerHTML = myDataJson.results[0].incorrect_answers[0];
+        document.getElementById(buttonIds[2]).innerHTML = myDataJson.results[0].incorrect_answers[1];
+        document.getElementById(buttonIds[3]).innerHTML = myDataJson.results[0].incorrect_answers[2];
+    }
+    myCall();
+}
+    </script>
+
+<h2 style="font-size: 40px;">t1a05-year2-trivia-luke</h2>
+
+<b style="font-size: 25px">Category:</b><br>
+<select id="categorySelect"><option>General Knowledge</option><option>History</option><option>Vehicles</option></select><br><br>
+
+<input type="button" value="Trivia" onclick="{
+playTrivia();
+}"><br><br>
+<div id="myDiv01" style="font-size: 50px;">...</div>
+<hr>
+<button id="myAnswer1" onclick="answerClick(this)"></button>&nbsp;&nbsp;
+<button id="myAnswer2" onclick="answerClick(this)"></button><br><br>
+<button id="myAnswer3" onclick="answerClick(this)"></button>&nbsp;&nbsp;
+<button id="myAnswer4" onclick="answerClick(this)"></button><br>
+
+<b style="font-size: 30px;">Score: </b><div style="font-size: 30px;" id="score">/</div>
