@@ -14,15 +14,7 @@ using <a href="https://www.openstreetmap.org">www.openstreetmap.org</a> and the 
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     
-    var myIcon = L.icon({
-    iconUrl: 'my-icon.png',
-    iconSize: [38, 95],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76],
-    shadowUrl: 'my-icon-shadow.png',
-    shadowSize: [68, 95],
-    shadowAnchor: [22, 94]
 });
 
-    const marker01 = L.marker([49.141235, -122.313577], {icon: myIcon}).addTo(map).bindPopup('This room');
+    const marker01 = L.marker([49.141235, -122.313577]).addTo(map).bindPopup('This room');
 </script>
