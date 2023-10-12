@@ -96,7 +96,7 @@ document.body.appendChild(renderer.domElement);
 let gun; // Rename 'model' to 'gun'
 const loader1 = new THREE.FBXLoader();
 
-loader1.load('t1a06-armature-jeremy.fbx', function (object) {
+loader1.load('iphone.fbx', function (object) {
     gun = object;
     gun.scale.set(0.03, 0.03, 0.03); // Set the scale of the gun model
     scene.add(gun); // Add the loaded model to the scene
