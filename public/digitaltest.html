@@ -1,0 +1,16 @@
+<h1 style="text-align: center;">Fun Coding by Luke</h1><br>
+
+Name: <input type="text" id="myText01" value="Fred"><br>
+Age:  <input type="number" id="myText02" value="16"><br>
+
+<input type="button" value="Hello" onclick="{
+    let myName = document.getElementById('myText01').value;
+    let myAge = document.getElementById('myText02').value;
+
+    if(myAge < 5) {document.getElementById('myDiv01').innerHTML = myName + ' is a baby'}
+    else if(myAge < 13 ) {document.getElementById('myDiv01').innerHTML = myName + ' is a child'}
+    else if(myAge > 12 && myAge < 18) {document.getElementById('myDiv01').innerHTML = myName + ' is a teen'}
+    else {document.getElementById('myDiv01').innerHTML = myName + ' is an adult'}
+}">
+
+<div id="myDiv01">...</div>
