@@ -1,0 +1,35 @@
+<link rel="stylesheet" type="text/css" href="styling.css">
+<h2>t1a09-year2-local-storage-luke</h2>
+
+
+<body onload="{
+    myStorage = localStorage.getItem('myStoredDiv');
+    if(myStorage != null) {
+        document.getElementById('myText1').innerHTML = myStorage
+    }
+}">
+
+<body onunload="{
+        localStorage.setItem('myStoredDiv', document.getElementById('myText1').innerHTML)
+}">
+
+
+
+<input type="text" id="myInput"><input type="button" value="Add" onclick="{
+    var inputText = document.getElementById('myInput').value;
+    if(inputText == ''){
+        inputText = 'Write in the box'
+    }
+    var divToAdd = '<div style=\'background-color: rgb(100, 120, 146); width: 300px; border-radius: 8px; color: white; vertical-align: middle; font-size: 30px; margin-top: 3px;\'>' + '<input type=\'button\' value=\'X\' style=\'background-color: rgb(240, 56, 56); color: white; border-radius: 5px; width: 30px; height: 30px; font-size: 25px;\' onclick=\'removeDiv(this)\'>' + inputText + '</div>';
+    document.getElementById('myText1').innerHTML += divToAdd;
+    document.getElementById('myInput').value = '';
+}">
+<div id="myText1">
+</div>
+
+<script>
+function removeDiv(button) {
+    var divToRemove = button.parentNode;
+    divToRemove.parentNode.removeChild(divToRemove);
+}
+</script>
