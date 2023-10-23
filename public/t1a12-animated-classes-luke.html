@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="styling.css">
+
+<h2>t1a12-year2-animated-classes-luke</h2>
+
+<script>
+    class myAnimate {
+        constructor(element) {
+            this.element = element;
+        }
+
+        move(passX, passY) {
+            this.element.style.left = parseInt(this.element.style.left) + passX;
+            this.element.style.top = parseInt(this.element.style.top) + passY;
+        }
+    }
+</script>
+
+<img id="myCharacter01" src="Images/css/grab.png" style="position: absolute; left: 0px; top: 150px; width: 40px; transition: 0.2s all;">
+
+<input type="button" value="Move Class (x, y)" onclick="{
+    let myX = document.getElementById('xValue').value
+    let myY = document.getElementById('yValue').value
+    new myAnimate(document.getElementById('myCharacter01')).move(parseInt(myX), parseInt(myY));
+}">
+
+<input type="number" style="width: 80px;" id="xValue" value="50">
+<input type="number" style="width: 80px;" id="yValue" value="50">
