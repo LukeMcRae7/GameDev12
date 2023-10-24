@@ -3,25 +3,47 @@
 <h2>t1a12-year2-animated-classes-luke</h2>
 
 <script>
-    class myAnimate {
-        constructor(element) {
-            this.element = element;
+    class myPerson {
+        constructor(passID, passImage, passLeft, passTop) {
+            this.myId = passID;
+            this.myImage = passImage;
+            this.myLeft = passLeft;
+            this.myTop = passTop;
         }
 
-        move(passX, passY) {
-            this.element.style.left = parseInt(this.element.style.left) + passX;
-            this.element.style.top = parseInt(this.element.style.top) + passY;
+        myShowPosition(){
+            document.getElementById(this.myId).style.left = this.myLeft
+            document.getElementById(this.myId).style.top = this.myTop
+        }
+
+        moveRight(myJumpAmount){
+            let my01 = document.getElementById(this.myId).style
+            my01.left = parseInt(my01.left) + parseInt(myJumpAmount)
+        }
+        moveDown(myJumpAmount){
+            let my01 = document.getElementById(this.myId).style
+            my01.top = parseInt(my01.top) + parseInt(myJumpAmount)
         }
     }
+
+    myPlayer = new myPerson('myCharacter01', 'myImage01.jpg', '0px', '250px')
+myPlayer.myShowPosition()
 </script>
 
-<img id="myCharacter01" src="Images/css/grab.png" style="position: absolute; left: 0px; top: 150px; width: 40px; transition: 0.2s all;">
+<img id="myCharacter01" src="Images/css/grab.png" style="position: absolute; left: 0px; top: 250px; width: 40px; transition: 0.2s all;">
 
-<input type="button" value="Move Class (x, y)" onclick="{
-    let myX = document.getElementById('xValue').value
-    let myY = document.getElementById('yValue').value
-    new myAnimate(document.getElementById('myCharacter01')).move(parseInt(myX), parseInt(myY));
+<input type="button" value="Up" onclick="{
+    myPlayer.moveDown(-15)
+    }"><br>
+<input type="button" value="Left" onclick="{
+    myPlayer.moveRight(-15)
 }">
+<input type="button" value="Right" onclick="{
+    myPlayer.moveRight(15)
+    }"><br>
+            
+<input type="button" value="Down" onclick="{
+    myPlayer.moveDown(15)
+    }">
 
-<input type="number" style="width: 80px;" id="xValue" value="50">
-<input type="number" style="width: 80px;" id="yValue" value="50">
+
