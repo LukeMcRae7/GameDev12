@@ -1,0 +1,191 @@
+<link rel="stylesheet" type="text/css" href="styling.css">
+
+<style>
+  body{
+    text-align: center;
+  }
+
+  .containerDiv{
+    background-color: #95cae9;
+    width: 700px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    left: 50%;
+    border: 2px solid;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+
+<h1 align=center>t1a11-year2-python-to-cpp-luke</h1>
+
+<!--You can edit and change this code in the textarea but when it works, save it to the <i> myPython</i> variable in the code<br><br>
+Open Console Ctrl-Shift-i to see regular Print(a) statements.<br>
+Thanks: Tommy, Mohid, Luke, Trey, Jonathan, Giogio and Leander for helping to convert Python to the web.<br><br>-->
+<div id="C++ Container" class="containerDiv" style="position: absolute; top: 0px; left: 10%; width: 700px; height: 700px; margin-top: 80px;">
+<h2>In C++</h2>
+<textarea style="width: 500px; height: 550px; border: 2px solid;">
+    #include <iostream>
+        #include <vector>
+        #include <string>
+        
+        class Student {
+        public:
+            std::string name;
+            int score;
+        
+            Student(std::string name, int score) {
+                this->name = name;
+                this->score = score;
+            }
+        };
+        
+        std::vector<Student> students = {
+            Student("Alice", 85),
+            Student("Bob", 92),
+            Student("Charlie", 78),
+            Student("David", 65),
+            Student("Eve", 99)
+        };
+        
+        std::string calculate_grade(int score) {
+            if (score >= 90) {
+                return "A";
+            } else if (score >= 80) {
+                return "B";
+            } else if (score >= 70) {
+                return "C";
+            } else if (score >= 60) {
+                return "D";
+            } else {
+                return "F";
+            }
+        }
+        
+        int main() {
+            std::vector<std::string> b;
+        
+            for (const auto& student : students) {
+                std::string grade = calculate_grade(student.score);
+                if (grade == myGrade) {
+                    std::string formatted_info = "Name: " + student.name + ", Score: " + std::to_string(student.score) + ", Grade: " + calculate_grade(student.score);
+                    b.push_back(formatted_info);
+                }
+            }
+        
+            int total_score = 0;
+            for (const auto& student : students) {
+                total_score += student.score;
+            }
+            int a = total_score / students.size();
+        
+            return 0;
+        }        
+    </textarea>
+</div>
+
+
+<div class="containerDiv">
+Check for Grade: <input id="myText01" type=text value="A" onChange="{myGrade = this.value}"><br>
+<textarea style="height: 250px; border: 2px solid;" id="myArea01" rows=10 cols=70 NOWRAP onChange="{myPython = this.value}"></textarea><br>
+
+<input type=button style="font-size: 30px; margin-top: 10px;" value="Run" onclick = "{evaluatePython()}"> 
+<input type=button style="font-size: 30px; margin-top: 10px;" value="Clear" onclick = "{document.getElementById('myDiv01').innerHTML = ''}"> <br>
+
+<div  id="myDiv01" >...</div>
+
+
+
+
+<script>
+let myPython = `
+# Define a Student class to store student information
+class Student:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+# Create a list of student objects
+students = [
+    Student("Alice", 85),
+    Student("Bob", 92),
+    Student("Charlie", 78),
+    Student("David", 65),
+    Student("Eve", 99),
+]
+
+# Function to calculate the grade based on the score
+def calculate_grade(score):
+    if score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    elif score >= 60:
+        return "D"
+    else:
+        return "F"
+
+from js import myGrade
+
+# Create a new list 'b' to store the formatted student information
+b = []
+
+# Iterate through the list of students and add the formatted information to 'b'
+for student in students:
+    grade = calculate_grade(student.score)
+    if grade == myGrade:
+        formatted_info = f"Name: {student.name}, Score: {student.score}, Grade: {calculate_grade(student.score)}"
+        b.append(formatted_info)
+
+
+# Calculate the average score of all students
+total_score = 0
+for student in students:
+    total_score += student.score
+
+a = total_score / len(students)
+a
+`
+  
+
+document.getElementById("myArea01").value  = myPython
+const myOutput = document.getElementById("myDiv01");
+var myGrade = document.getElementById("myText01").value;   // note: let does not pass to Python
+myOutput.innerHTML = "<b style=\"color: red\">Initializing...</b><br>";
+  
+// init Pyodide
+async function main() {
+  let pyodide = await loadPyodide();
+  myOutput.innerHTML = "<b style=\"color: green\">Ready!</b><br>"
+  return pyodide;
+}
+let pyodideReadyPromise = main();
+
+async function evaluatePython() {
+    pyodide = await pyodideReadyPromise;
+  
+   // myOutput.innerHTML += "Your code to run is:<br> >>>" + myPython.replace(/\n/g, '<br>') + "<br>";
+    try {
+        // Clear the captured output before running the code
+        captured_output = "";
+
+        // Run the Python code
+        let myReturn = pyodide.runPython(myPython);
+        myOutput.innerHTML += "Average Grade: " + myReturn + "<br>";
+        // Get the captured output
+        const myA = pyodide.globals.get("a");  
+        const myB = pyodide.globals.get("b");  
+        //myOutput.innerHTML += "The Python variable 'a' available to Javascript by using: pyodide.globals.get(a) is : " + myA + "<br>";       
+        myOutput.innerHTML += "The javascript variable used in Python as myGrade is : " + myGrade + "<br><br>";
+        myOutput.innerHTML += "Students with " + myGrade + ": <br>" + myB + "<br>";
+    } catch (err) {
+        myOutput.innerHTML += err;
+    }
+}
+
+
+</script>
+</div>
