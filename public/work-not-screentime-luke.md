@@ -5,3 +5,7 @@ research react
 leetcode
 
 math work
+
+Nov 8:
+-GPT-4 Apps
+-more math work
