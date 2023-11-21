@@ -1,0 +1,16 @@
+<h1>Video-Flac Test #2 Luke</h1>
+<script>
+    let names = ["Tom", "Fred", "Mary"]
+</script>
+
+<input type="button" value="Check Names" onclick="{
+    document.getElementById('myDiv01').innerHTML = ''
+for(i=0 ; i<3 ; i++){
+    if(names[i] == 'Fred'){
+        document.getElementById('myDiv01').innerHTML += names[i] + ' wow'  + '<br>'
+    } else{
+        document.getElementById('myDiv01').innerHTML += names[i] + '<br>'
+    }
+}
+}">
+<div id="myDiv01">...</div>
