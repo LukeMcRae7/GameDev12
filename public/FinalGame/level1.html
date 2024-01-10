@@ -1,0 +1,128 @@
+<body id="myBody" style="background-repeat: repeat; background-size: 100%; background-color: black;">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<br><br><br><br>
+
+<script>
+    // global variables here
+    let myGlobalX = 3;
+    let myClock;
+    let isMovingRight = false;
+    let isMovingLeft = false;
+    let moveSpeed = 0.07;
+
+    // global functions here
+    function myHitOther(my1,my2){
+   left1   = parseInt(document.getElementById(my1).style.left)
+   right1  = left1 + parseInt(document.getElementById(my1).style.width)
+   top1    = parseInt(document.getElementById(my1).style.top)   
+   bottom1 = top1   + parseInt(document.getElementById(my1).style.height)
+   left2   = parseInt(document.getElementById(my2).style.left)
+   right2  = left2 + parseInt(document.getElementById(my2).style.width)
+   top2    = parseInt(document.getElementById(my2).style.top)   
+   bottom2 = top2   + parseInt(document.getElementById(my2).style.height)
+   if ((right1  >=  left2  ) &&      	   
+       (bottom1 >=  top2   ) &&
+       (left1   <=  right2 ) &&
+       (top1    <=  bottom2) ){
+       return true
+   }
+}
+
+
+function myCheckHit(){
+   if (myHitOther('myImg01','myHole') ){
+    //document.getElementById('background02').style.opacity = 100;
+    document.getElementById('myImg01').style.transition = '0s all';
+    document.getElementById('myImg01').style.opacity = 0;
+    document.getElementById('background01').src = 'Images/fallgif.gif';
+    document.getElementById('myImg01').style.top = '-50%';
+
+    setTimeout(() => {
+    window.location.href='https://www.google.com';
+}, 7000);
+   }
+
+
+   // more if statements here
+}
+
+    document.addEventListener('keydown', function (event) {
+        if ((event.key === 'D' || event.key === 'd') && !isMovingRight) {
+            isMovingRight = true;
+            isMovingLeft = false;
+            document.getElementById('myImg01').src = 'Images/Walk-Right.gif';
+            startMovingRight();
+        } else if ((event.key === 'A' || event.key === 'a') && !isMovingLeft) {
+            isMovingLeft = true;
+            isMovingRight = false;
+            document.getElementById('myImg01').src = 'Images/Walk-Left.gif';
+            startMovingLeft();
+        }
+    });
+
+    document.addEventListener('keyup', function (event) {
+        if (event.key === 'D' || event.key === 'd') {
+            isMovingRight = false;
+            stopMoving();
+            document.getElementById('myImg01').src = 'Images/Idle-Right.gif';
+        } else if (event.key === 'A' || event.key === 'a') {
+            isMovingLeft = false;
+            stopMoving();
+            document.getElementById('myImg01').src = 'Images/Idle-Left.gif';
+        }
+    });
+
+    function startMovingRight() {
+        stopMoving();
+        myClock = setInterval(function () {
+            myGlobalX += moveSpeed;
+            if (myGlobalX < 3) {
+                myGlobalX = 3;
+            }
+            document.getElementById('myImg01').style.left = myGlobalX + '%';
+            myCheckHit();
+        }, 3);
+    }
+
+    function startMovingLeft() {
+        stopMoving();
+        myClock = setInterval(function () {
+            myGlobalX -= moveSpeed;
+            if (myGlobalX < 3) {
+                myGlobalX = 3;
+            }
+            document.getElementById('myImg01').style.left = myGlobalX + '%';
+            myCheckHit();
+        }, 3);
+    }
+
+    function stopMoving() {
+        clearInterval(myClock);
+    }
+</script>
+
+<img id="myImg01" style="position:absolute; height: 20%; width: 5.5%; top:65%; left:3%; transition: 0.1s all; z-index: 1; filter: saturate(80%); filter: drop-shadow(-10px 20px 15px #463429);"
+    src="Images/Idle-Right.gif">
+
+<img id="background01" style="width: 100%; height: 104%; z-index: -2; position: absolute; top: -37px; left: 0px;" src="Images/Surface_location.png">
+
+<div id="background02" style="width: 100%; height: 104%; position: absolute; top: -37px; left: 0px; background-color: black; transition: 0.3s all; opacity: 0;">
+
+<div id="myHole" style="position: absolute; height: 70%; width: 9%; left: 91%; top: 10%"></div>
+
+<video autoplay muted loop id="myVideo" style="width: 10%; height: 7%;"> <source src="Images/Fall.mp4" type="video/mp4">  </video>
+
+<!--<img id="myImg02" style="position:absolute; width:100px; height: 100px; top:0px; left:250px; z-index: -1;"
+    src="Images/Game/myImage02.png">
+
+<br> -->
+
+<!--<input type=button value="Auto Background Left" style="width: 157px;" onclick="{
+    clearInterval(myClock)
+    let myTemp = '100px 0px'
+    myClock = setInterval(function () {
+        myGlobalX -= moveSpeed;
+        myTemp = myGlobalX + 'px 0px'
+        document.getElementById('myBody').style.backgroundPosition = myTemp
+    }, 100)
+  }">     -->
